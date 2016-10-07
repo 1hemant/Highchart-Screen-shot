@@ -52,13 +52,17 @@ $('#btnAnnotate').on('click', function(e) {
   html2canvas(document.getElementById("container"), {
     onrendered: function(c) {
       c.id = "SketchPad";
+      var can=document.createElement('canvas')
       //canvas.setBackgroundImage(c.toDataURL(), canvas.renderAll.bind(canvas), {
         //backgroundImageOpacity: 0.5,
         //backgroundImageStretch: false
       //});
-      document.body.appendChild(c);
+      console.log(c)
+      can.style="background:url("+c.toDataURL()+")"
+      document.body.appendChild(can);
+      $(can).sketch();
     }
   });
 });// end of btnAnnotate function
-$('#SketchPad').sketch();
+
 }); //end of page load function
